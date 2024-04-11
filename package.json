@@ -20,6 +20,8 @@
       "file-types": [
         "corth"
       ],
+      "highlights": "queries/highlights.scm",
+      "locals": "queries/locals.scm"
     }
   ]
 }
