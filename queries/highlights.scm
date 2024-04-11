@@ -33,6 +33,17 @@
   (global_allocation)
   ])
 
+((inline_comment)+ @comment.signature
+ .
+ [(returns_type_list)
+  (in_type_list)])
+
+(returns_type_list
+ (inline_comment) @comment.signature)
+
+(in_type_list
+ (inline_comment) @comment.signature)
+
 (include_statement (string_literal) @string.source)
 
 (macro_definition (name) @function.name)
