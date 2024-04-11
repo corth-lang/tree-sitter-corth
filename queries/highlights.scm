@@ -33,16 +33,14 @@
   (global_allocation)
   ])
 
-((inline_comment)+ @comment.signature
- .
- [(returns_type_list)
-  (in_type_list)])
+(proc_definition
+ [(inline_comment) @comment.inline.doc
+  (multiline_comment) @comment.multiline.doc])
 
-(returns_type_list
- (inline_comment) @comment.signature)
-
-(in_type_list
- (inline_comment) @comment.signature)
+(proc_definition
+ (inline_comment) @comment.signature
+ [arg: (builtin_type)
+       return: (builtin_type)])
 
 (include_statement (string_literal) @string.source)
 
@@ -52,10 +50,7 @@
 (global_allocation (name) @function.name)
 (local_allocation (name) @local.name)
 
-(returns_type_list (builtin_type) @type.builtin)
-(in_type_list (builtin_type) @type.builtin)
-(cast_statement (builtin_type) @type.builtin)
-(sizeof_statement (builtin_type) @type.builtin)
+(builtin_type) @type.builtin
 
 ((name) @function.call (#is-not? local))
 (name_list (name) @local.definition)

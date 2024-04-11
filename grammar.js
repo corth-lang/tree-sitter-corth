@@ -37,8 +37,10 @@ module.exports = grammar({
     proc_definition: $ => seq(
       'proc',
       $.name,
-      $.returns_type_list,
-      $.in_type_list,
+      field('arg', repeat($._type)),
+      '->',
+      field('return', repeat($._type)),
+      'in',
       $.end_block,
     ),
 
@@ -137,9 +139,6 @@ module.exports = grammar({
     do_block: $ => seq(repeat($._local_statement), 'do'),
 
     name_list: $ => seq(repeat($.name), 'in'),
-
-    returns_type_list: $ => seq(repeat($._type), '->'),
-    in_type_list: $ => seq(repeat($._type), 'in'),
 
     number: $ => choice(
       $.number_literal,
