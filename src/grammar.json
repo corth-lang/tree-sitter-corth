@@ -1,5 +1,5 @@
 {
-  "name": "Corth",
+  "name": "corth",
   "rules": {
     "source_file": {
       "type": "REPEAT",
