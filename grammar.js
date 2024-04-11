@@ -194,12 +194,8 @@ module.exports = grammar({
     ),
 
     // comments
-    inline_comment: _ => token(seq('//', /(\\+(.|\r?\n)|[^\\\n])*/)),
-    multiline_comment: _ => token(seq(
-      '/*',
-      /[^*]*\*+([^/*][^*]*\*+)*/,
-      '/',
-    )),
+    inline_comment: _ => token(/\/\/.*\n/),
+    multiline_comment: _ => token(/\/\*([^*]|\*[^\/])*\*\//),
   },
 });
 
