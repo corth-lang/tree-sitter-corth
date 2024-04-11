@@ -1,21 +1,11 @@
 [
   {
-    "type": "argument_signature",
+    "type": "builtin_type",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "intrinsic_type",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
-    "type": "callable",
+    "type": "cast_statement",
     "named": true,
     "fields": {},
     "children": {
@@ -23,11 +13,42 @@
       "required": true,
       "types": [
         {
-          "type": "if_else_statement",
+          "type": "builtin_type",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "do_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "builtin_type",
+          "named": true
+        },
+        {
+          "type": "cast_statement",
+          "named": true
+        },
+        {
+          "type": "char_literal",
           "named": true
         },
         {
           "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "intrinsic",
           "named": true
         },
         {
@@ -43,7 +64,19 @@
           "named": true
         },
         {
+          "type": "number_literal",
+          "named": true
+        },
+        {
           "type": "peek_statement",
+          "named": true
+        },
+        {
+          "type": "singleton",
+          "named": true
+        },
+        {
+          "type": "sizeof_statement",
           "named": true
         },
         {
@@ -58,7 +91,7 @@
     }
   },
   {
-    "type": "code_block",
+    "type": "else_block",
     "named": true,
     "fields": {},
     "children": {
@@ -66,52 +99,31 @@
       "required": false,
       "types": [
         {
-          "type": "callable",
+          "type": "builtin_type",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "do_code_block",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
+        },
         {
-          "type": "callable",
+          "type": "cast_statement",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "else_code_block",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
+        },
         {
-          "type": "callable",
+          "type": "char_literal",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "expandable",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
+        },
         {
-          "type": "intrinsic_type",
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "intrinsic",
+          "named": true
+        },
+        {
+          "type": "let_statement",
+          "named": true
+        },
+        {
+          "type": "local_allocation",
           "named": true
         },
         {
@@ -119,29 +131,131 @@
           "named": true
         },
         {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "peek_statement",
+          "named": true
+        },
+        {
+          "type": "singleton",
+          "named": true
+        },
+        {
+          "type": "sizeof_statement",
+          "named": true
+        },
+        {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "while_do_statement",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "if_else_statement",
+    "type": "end_block",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "code_block",
+          "type": "builtin_type",
           "named": true
         },
         {
-          "type": "else_code_block",
+          "type": "cast_statement",
+          "named": true
+        },
+        {
+          "type": "char_literal",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "intrinsic",
+          "named": true
+        },
+        {
+          "type": "let_statement",
+          "named": true
+        },
+        {
+          "type": "local_allocation",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "peek_statement",
+          "named": true
+        },
+        {
+          "type": "singleton",
+          "named": true
+        },
+        {
+          "type": "sizeof_statement",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "while_do_statement",
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "global_allocation",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "name",
+            "named": true
+          }
+        ]
+      },
+      "size": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "char_literal",
+            "named": true
+          },
+          {
+            "type": "name",
+            "named": true
+          },
+          {
+            "type": "number_literal",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -149,11 +263,34 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "code_block",
+          "type": "else_block",
+          "named": true
+        },
+        {
+          "type": "end_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "in_type_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "builtin_type",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         }
       ]
@@ -175,7 +312,7 @@
     }
   },
   {
-    "type": "intrinsic_type",
+    "type": "intrinsic",
     "named": true,
     "fields": {}
   },
@@ -188,11 +325,11 @@
       "required": true,
       "types": [
         {
-          "type": "code_block",
+          "type": "end_block",
           "named": true
         },
         {
-          "type": "name",
+          "type": "name_list",
           "named": true
         }
       ]
@@ -201,20 +338,45 @@
   {
     "type": "local_allocation",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "code_block",
-          "named": true
-        },
-        {
-          "type": "name",
-          "named": true
-        }
-      ]
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "end_block",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "name",
+            "named": true
+          }
+        ]
+      },
+      "size": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "char_literal",
+            "named": true
+          },
+          {
+            "type": "name",
+            "named": true
+          },
+          {
+            "type": "number_literal",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -226,11 +388,132 @@
       "required": true,
       "types": [
         {
-          "type": "expandable",
+          "type": "builtin_type",
+          "named": true
+        },
+        {
+          "type": "cast_statement",
+          "named": true
+        },
+        {
+          "type": "char_literal",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "intrinsic",
+          "named": true
+        },
+        {
+          "type": "let_statement",
+          "named": true
+        },
+        {
+          "type": "local_allocation",
+          "named": true
+        },
+        {
+          "type": "macro_definition",
           "named": true
         },
         {
           "type": "name",
+          "named": true
+        },
+        {
+          "type": "namespace_scope",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "peek_statement",
+          "named": true
+        },
+        {
+          "type": "proc_definition",
+          "named": true
+        },
+        {
+          "type": "singleton",
+          "named": true
+        },
+        {
+          "type": "sizeof_statement",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "while_do_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "name_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "namespace_scope",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "name",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "global_allocation",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "macro_definition",
+          "named": true
+        },
+        {
+          "type": "namespace_scope",
+          "named": true
+        },
+        {
+          "type": "proc_definition",
           "named": true
         }
       ]
@@ -245,11 +528,11 @@
       "required": true,
       "types": [
         {
-          "type": "code_block",
+          "type": "end_block",
           "named": true
         },
         {
-          "type": "name",
+          "type": "name_list",
           "named": true
         }
       ]
@@ -264,7 +547,11 @@
       "required": true,
       "types": [
         {
-          "type": "code_block",
+          "type": "end_block",
+          "named": true
+        },
+        {
+          "type": "in_type_list",
           "named": true
         },
         {
@@ -272,33 +559,14 @@
           "named": true
         },
         {
-          "type": "procedure_signature",
+          "type": "returns_type_list",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "procedure_signature",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "argument_signature",
-          "named": true
-        },
-        {
-          "type": "return_signature",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "return_signature",
+    "type": "returns_type_list",
     "named": true,
     "fields": {},
     "children": {
@@ -306,7 +574,35 @@
       "required": false,
       "types": [
         {
-          "type": "intrinsic_type",
+          "type": "builtin_type",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "singleton",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "sizeof_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "builtin_type",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         }
       ]
@@ -321,11 +617,19 @@
       "required": false,
       "types": [
         {
+          "type": "global_allocation",
+          "named": true
+        },
+        {
           "type": "include_statement",
           "named": true
         },
         {
           "type": "macro_definition",
+          "named": true
+        },
+        {
+          "type": "namespace_scope",
           "named": true
         },
         {
@@ -344,23 +648,155 @@
       "required": true,
       "types": [
         {
-          "type": "code_block",
+          "type": "do_block",
           "named": true
         },
         {
-          "type": "do_code_block",
+          "type": "end_block",
           "named": true
         }
       ]
     }
   },
   {
+    "type": "!",
+    "named": false
+  },
+  {
+    "type": "!!",
+    "named": false
+  },
+  {
+    "type": "!16",
+    "named": false
+  },
+  {
+    "type": "!32",
+    "named": false
+  },
+  {
+    "type": "!64",
+    "named": false
+  },
+  {
+    "type": "!8",
+    "named": false
+  },
+  {
+    "type": "!=",
+    "named": false
+  },
+  {
+    "type": "%",
+    "named": false
+  },
+  {
+    "type": "&",
+    "named": false
+  },
+  {
+    "type": "&&",
+    "named": false
+  },
+  {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": "**",
+    "named": false
+  },
+  {
+    "type": "*2",
+    "named": false
+  },
+  {
+    "type": "+",
+    "named": false
+  },
+  {
+    "type": "-",
+    "named": false
+  },
+  {
     "type": "->",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": "/%",
+    "named": false
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": "<=",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": ">=",
+    "named": false
+  },
+  {
+    "type": "@16",
+    "named": false
+  },
+  {
+    "type": "@32",
+    "named": false
+  },
+  {
+    "type": "@64",
+    "named": false
+  },
+  {
+    "type": "@8",
+    "named": false
+  },
+  {
+    "type": "NULLPTR",
+    "named": false
+  },
+  {
+    "type": "^",
+    "named": false
+  },
+  {
+    "type": "^^",
+    "named": false
+  },
+  {
+    "type": "and",
     "named": false
   },
   {
     "type": "bool",
     "named": false
+  },
+  {
+    "type": "break",
+    "named": false
+  },
+  {
+    "type": "cast",
+    "named": false
+  },
+  {
+    "type": "char_literal",
+    "named": true
   },
   {
     "type": "do",
@@ -379,6 +815,34 @@
     "named": false
   },
   {
+    "type": "endnamespace",
+    "named": false
+  },
+  {
+    "type": "false",
+    "named": false
+  },
+  {
+    "type": "file-desc",
+    "named": false
+  },
+  {
+    "type": "i16",
+    "named": false
+  },
+  {
+    "type": "i32",
+    "named": false
+  },
+  {
+    "type": "i64",
+    "named": false
+  },
+  {
+    "type": "i8",
+    "named": false
+  },
+  {
     "type": "if",
     "named": false
   },
@@ -389,6 +853,10 @@
   {
     "type": "include",
     "named": false
+  },
+  {
+    "type": "inline_comment",
+    "named": true
   },
   {
     "type": "int",
@@ -407,7 +875,19 @@
     "named": false
   },
   {
+    "type": "multiline_comment",
+    "named": true
+  },
+  {
     "type": "name",
+    "named": true
+  },
+  {
+    "type": "namespace",
+    "named": false
+  },
+  {
+    "type": "number_literal",
     "named": true
   },
   {
@@ -419,11 +899,107 @@
     "named": false
   },
   {
+    "type": "ptr",
+    "named": false
+  },
+  {
+    "type": "return",
+    "named": false
+  },
+  {
+    "type": "sizeof",
+    "named": false
+  },
+  {
     "type": "string_literal",
     "named": true
   },
   {
+    "type": "syscall0",
+    "named": false
+  },
+  {
+    "type": "syscall1",
+    "named": false
+  },
+  {
+    "type": "syscall2",
+    "named": false
+  },
+  {
+    "type": "syscall3",
+    "named": false
+  },
+  {
+    "type": "syscall4",
+    "named": false
+  },
+  {
+    "type": "syscall5",
+    "named": false
+  },
+  {
+    "type": "syscall6",
+    "named": false
+  },
+  {
+    "type": "true",
+    "named": false
+  },
+  {
+    "type": "u%",
+    "named": false
+  },
+  {
+    "type": "u*",
+    "named": false
+  },
+  {
+    "type": "u**",
+    "named": false
+  },
+  {
+    "type": "u*2",
+    "named": false
+  },
+  {
+    "type": "u/",
+    "named": false
+  },
+  {
+    "type": "u/%",
+    "named": false
+  },
+  {
+    "type": "u16",
+    "named": false
+  },
+  {
+    "type": "u32",
+    "named": false
+  },
+  {
+    "type": "u64",
+    "named": false
+  },
+  {
+    "type": "u8",
+    "named": false
+  },
+  {
+    "type": "uint",
+    "named": false
+  },
+  {
     "type": "while",
+    "named": false
+  },
+  {
+    "type": "|",
+    "named": false
+  },
+  {
+    "type": "||",
     "named": false
   }
 ]

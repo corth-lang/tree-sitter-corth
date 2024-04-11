@@ -1,164 +1,208 @@
 module.exports = grammar({
-    name: "Corth",
+  name: "Corth",
 
-    extras: $ => [
-	/ /,
-	/\t/,
-	/\n/,
-	/\/\/.*/,
-	/\/\*(.|\n)*\*\//,
-    ],
+  extras: $ => [
+    / /,
+    /\t/,
+    /\n/,
+    $.inline_comment,
+    $.multiline_comment,
+  ],
 
-    rules: {
-	source_file: $ => repeat(
-	    choice(
-		$.include_statement,
-		$.macro_definition,
-		$.proc_definition,
-	    ),
-	),
+  rules: {
+    source_file: $ => repeat($._global_statement),
 
-	// global statements
-	include_statement: $ => seq(
-	    'include',
-	    $.string_literal,
-	),
+    // global statements
 
-	proc_definition: $ => seq(
-	    'proc',
-	    $.name,
-            $.procedure_signature,
-	    $.code_block,
-	),
+    _global_statement: $ => choice(
+      $.include_statement,
+      $.namespace_scope,
+      $.macro_definition,
+      $.proc_definition,
+      $.global_allocation,
+    ),
 
-	global_allocation: $ => seq(
-	    'memory',
-	    $.name,
-	    choice(
-		$.name,
-	    ),
-	    'end',
-	),
+    include_statement: $ => seq(
+      'include',
+      $.string_literal,
+    ),
 
-        procedure_signature: $ => seq(
-            $.argument_signature,
-            $.return_signature,
+    namespace_scope: $ => seq(
+      'namespace',
+      field('name', $.name),
+      $._global_statement,
+      'endnamespace',
+    ),
+
+    proc_definition: $ => seq(
+      'proc',
+      $.name,
+      $.returns_type_list,
+      $.in_type_list,
+      $.end_block,
+    ),
+
+    global_allocation: $ => seq(
+      'memory',
+      andSep(
+        seq(
+          field('name', $.name),
+          field('size', $._compile_time_constant),
         ),
+      ),
+      'end',
+    ),
 
-	argument_signature: $ => seq(
-	    repeat(
-		$.intrinsic_type,
-	    ),
-	    '->',
-	),
+    macro_definition: $ => seq(
+      'macro',
+      $.name,
+      repeat(
+        choice(
+          $._local_statement,
+          $.include_statement,
+          $.namespace_scope,
+          $.macro_definition,
+          $.proc_definition,
+        )
+      ),
+      'endmacro'
+    ),
 
-	return_signature: $ => seq(
-	    repeat(
-		$.intrinsic_type,
-	    ),
-	    'in',
-	),
+    // local statements
+    _local_statement: $ => choice(
+      $._primitive,
+      $.local_allocation,
+      $.if_statement,
+      $.while_do_statement,
+      $.let_statement,
+      $.peek_statement,
+      $.cast_statement,
+      $.sizeof_statement,
+      'break',
+      'return'
+    ),
 
-	macro_definition: $ => seq(
-	    'macro',
-	    $.name,
-	    repeat($.expandable),
-	    'endmacro'
-	),
+    local_allocation: $ => seq(
+      'memory',
+      andSep(
+        seq(
+          field('name', $.name),
+          field('size', $._compile_time_constant),
+        ),
+      ),
+      'in',
+      field('body', $.end_block)
+    ),
 
-	expandable: $ => choice(
-	    'include',
-	    'memory',
-	    'proc',
-	    '->',
-	    'in',
-	    'end',
-	    'if',
-	    'else',
-	    'while',
-	    'do',
-	    'let',
-	    'peek',
-	    $.name,
-	    $.string_literal,
-	    $.intrinsic_type,
-	),
+    if_statement: $ => seq(
+      'if',
+      optional($.else_block),
+      $.end_block,
+    ),
 
-	// local statements
-	code_block: $ => seq(
-	    repeat($.callable),
-	    'end',
-	),
+    let_statement: $ => seq(
+      'let',
+      $.name_list,
+      $.end_block,
+    ),
 
-	else_code_block: $ => seq(
-	    repeat($.callable),
-	    'else',
-	),
+    peek_statement: $ => seq(
+      'peek',
+      $.name_list,
+      $.end_block,
+    ),
 
-	do_code_block: $ => seq(
-	    repeat($.callable),
-	    'do',
-	),
+    while_do_statement: $ => seq(
+      'while',
+      $.do_block,
+      $.end_block,
+    ),
 
-	callable: $ => choice(
-	    $.local_allocation,
-	    $.if_statement,
-	    $.if_else_statement,
-	    $.while_do_statement,
-	    $.let_statement,
-	    $.peek_statement,
-	    $.name,
-	    $.string_literal,
-	),
+    cast_statement: $ => seq(
+      'cast',
+      $._type,
+    ),
 
-	local_allocation: $ => seq(
-	    'memory',
-	    $.name,
-	    choice(
-		$.name,
-	    ),
-	    'in',
-	    $.code_block,
-	),
+    sizeof_statement: $ => seq(
+      'sizeof',
+      choice(
+        $.builtin_type,
+        $.name,
+      ),
+    ),
 
-	if_else_statement: $ => seq(
-	    'if',
-	    $.else_code_block,
-	    $.code_block,
-	),
+    // intermediate
+    else_block: $ => seq(repeat($._local_statement), 'else'),
+    end_block: $ => seq(repeat($._local_statement), 'end'),
+    do_block: $ => seq(repeat($._local_statement), 'do'),
 
-	if_statement: $ => seq(
-	    'if',
-	    $.code_block,
-	),
+    name_list: $ => seq(repeat($.name), 'in'),
 
-	let_statement: $ => seq(
-	    'let',
-	    repeat($.name),
-	    'in',
-	    $.code_block
-	),
+    returns_type_list: $ => seq(repeat($._type), '->'),
+    in_type_list: $ => seq(repeat($._type), 'in'),
 
-	peek_statement: $ => seq(
-	    'peek',
-	    repeat($.name),
-	    'in',
-	    $.code_block
-	),
+    number: $ => choice(
+      $.number_literal,
+      $.char_literal
+    ),
 
-	while_do_statement: $ => seq(
-	    'while',
-	    $.do_code_block,
-	    $.code_block,
-	),
+    _compile_time_constant: $ => choice(
+      $.number_literal,
+      $.char_literal,
+      $.name,
 
-	// primitives
-	// integer_immediate: $ => /((0b[0-1]+)|0o[0-7]+|0x[0-9a-fA-F]+|-?([0-9]+))/,
-	name: $ => /[^ \t\n]+/,
-	string_literal: $ => /\"[^\"]*\"/,
-	intrinsic_type: $ => choice(
-	    'int',
-	    'bool'
-	),
-    },
+    ),
+
+    _type: $ => choice(
+      $.builtin_type,
+      $.name,
+    ),
+
+    // primitives
+    intrinsic: $ => choice(
+      '+', '-',
+      '*', '*2', '**', '/', '%', '/%',
+      'u*', 'u*2', 'u**', 'u/', 'u%', 'u/%',
+      '!!', '||', '&&', '^^',
+      '!', '|', '&', '^',
+      '=', '!=', '<', '<=', '>', '>=',
+      '@8', '!8', '@16', '!16', '@32', '!32', '@64', '!64',
+      'syscall0', 'syscall1', 'syscall2', 'syscall3', 'syscall4', 'syscall5', 'syscall6',
+    ),
+    binary_prefix: $ => /0[bB]/,
+    octal_prefix: $ => /0[oO]/,
+    hexadecimal_prefix: $ => /0[oO]/,
+    number_literal: $ => /((0[bB][0-1]+)|0[oO][0-7]+|0[xX][0-9a-fA-F]+|-?([0-9]+))/,
+    char_literal: $ => /\'(([^\\])|(\\([xX][0-9a-fA-F][0-9a-fA-F]|[0nt\'\"\\])))\'/,
+    string_literal: $ => /\"[^\"]*\"/,
+    builtin_type: $ => choice(
+      'int', 'uint',
+      'i8', 'i16', 'i32', 'i64',
+      'u8', 'u16', 'u32', 'u64',
+      'ptr', 'file-desc', 'bool'),
+    singleton: $ => choice('true', 'false', 'NULLPTR'),
+    name: $ => /[^ \t\n]+/,
+
+    _primitive: $ => choice(
+      $.intrinsic,
+      $.char_literal,
+      $.number_literal,
+      $.string_literal,
+      $.builtin_type,
+      $.singleton,
+      $.name,
+    ),
+
+    // comments
+    inline_comment: _ => token(seq('//', /(\\+(.|\r?\n)|[^\\\n])*/)),
+    multiline_comment: _ => token(seq(
+      '/*',
+      /[^*]*\*+([^/*][^*]*\*+)*/,
+      '/',
+    )),
+  },
 });
+
+function andSep(item) {
+  return seq(item, repeat(seq('and', item)));
+}
