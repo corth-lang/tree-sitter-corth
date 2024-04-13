@@ -22,6 +22,10 @@
 (inline_comment) @comment.inline
 (multiline_comment) @comment.multiline
 
+((name) @function.call (#is-not? local))
+(name_list (name) @local.definition)
+(local_allocation name: (name) @local.definition)
+
 ([
   (multiline_comment) @comment.multiline.doc
   (inline_comment) @comment.inline.doc
@@ -48,10 +52,5 @@
 (proc_definition (name) @function.name)
 (proc_definition (name) @function.main (#eq? @function.main "main"))
 (global_allocation (name) @function.name)
-(local_allocation (name) @local.name)
 
 (builtin_type) @type.builtin
-
-((name) @function.call (#is-not? local))
-(name_list (name) @local.definition)
-(local_allocation name: (name) @local.definition)
