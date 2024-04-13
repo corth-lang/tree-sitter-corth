@@ -59,7 +59,7 @@ module.exports = grammar({
 
     macro_definition: $ => seq(
       'macro',
-      $.name,
+      field('name', $.name),
       repeat(
         choice(
           $._local_statement,
