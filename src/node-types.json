@@ -686,10 +686,6 @@
     "named": false
   },
   {
-    "type": "**",
-    "named": false
-  },
-  {
     "type": "*2",
     "named": false
   },
@@ -707,10 +703,6 @@
   },
   {
     "type": "/",
-    "named": false
-  },
-  {
-    "type": "/%",
     "named": false
   },
   {
@@ -938,19 +930,11 @@
     "named": false
   },
   {
-    "type": "u**",
-    "named": false
-  },
-  {
     "type": "u*2",
     "named": false
   },
   {
     "type": "u/",
-    "named": false
-  },
-  {
-    "type": "u/%",
     "named": false
   },
   {

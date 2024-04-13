@@ -1,5 +1,6 @@
 {
   "name": "corth",
+  "word": "name",
   "rules": {
     "source_file": {
       "type": "REPEAT",
@@ -599,19 +600,11 @@
         },
         {
           "type": "STRING",
-          "value": "**"
-        },
-        {
-          "type": "STRING",
           "value": "/"
         },
         {
           "type": "STRING",
           "value": "%"
-        },
-        {
-          "type": "STRING",
-          "value": "/%"
         },
         {
           "type": "STRING",
@@ -623,19 +616,11 @@
         },
         {
           "type": "STRING",
-          "value": "u**"
-        },
-        {
-          "type": "STRING",
           "value": "u/"
         },
         {
           "type": "STRING",
           "value": "u%"
-        },
-        {
-          "type": "STRING",
-          "value": "u/%"
         },
         {
           "type": "STRING",
@@ -855,7 +840,7 @@
     },
     "name": {
       "type": "PATTERN",
-      "value": "[^ \\t\\n]+"
+      "value": "[a-zA-Z_0-9\\/_\\-.:?!()\\[\\]{}=+@%<>]+"
     },
     "_primitive": {
       "type": "CHOICE",

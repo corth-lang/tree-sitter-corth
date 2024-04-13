@@ -9,6 +9,8 @@ module.exports = grammar({
     $.multiline_comment,
   ],
 
+  word: $ => $.name,
+
   rules: {
     source_file: $ => repeat($._global_statement),
 
@@ -160,8 +162,8 @@ module.exports = grammar({
     // primitives
     intrinsic: $ => choice(
       '+', '-',
-      '*', '*2', '**', '/', '%', '/%',
-      'u*', 'u*2', 'u**', 'u/', 'u%', 'u/%',
+      '*', '*2', '/', '%',
+      'u*', 'u*2', 'u/', 'u%',
       '!!', '||', '&&', '^^',
       '!', '|', '&', '^',
       '=', '!=', '<', '<=', '>', '>=',
@@ -180,7 +182,7 @@ module.exports = grammar({
       'u8', 'u16', 'u32', 'u64',
       'ptr', 'file-desc', 'bool'),
     singleton: $ => choice('true', 'false', 'NULLPTR'),
-    name: $ => /[^ \t\n]+/,
+    name: $ => /[a-zA-Z_0-9\/_\-.:?!()\[\]{}=+@%<>]+/,
 
     _primitive: $ => choice(
       $.intrinsic,
