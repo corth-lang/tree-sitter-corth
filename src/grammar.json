@@ -63,8 +63,11 @@
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "_global_statement"
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_global_statement"
+          }
         },
         {
           "type": "STRING",

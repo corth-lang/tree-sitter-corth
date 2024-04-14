@@ -32,7 +32,7 @@ module.exports = grammar({
     namespace_scope: $ => seq(
       'namespace',
       field('name', $.name),
-      $._global_statement,
+      repeat($._global_statement),
       'endnamespace',
     ),
 
