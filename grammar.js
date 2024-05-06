@@ -175,7 +175,7 @@ module.exports = grammar({
     hexadecimal_prefix: $ => /0[oO]/,
     number_literal: $ => /((0[bB][0-1]+)|0[oO][0-7]+|0[xX][0-9a-fA-F]+|-?([0-9]+))/,
     char_literal: $ => /\'(([^\\])|(\\([xX][0-9a-fA-F][0-9a-fA-F]|[0nt\'\"\\])))\'/,
-    string_literal: $ => /\"[^\"]*\"/,
+    string_literal: $ => /\"([^\"]|(\\\"))*[^\\]\"/,
     builtin_type: $ => choice(
       'int', 'uint',
       'i8', 'i16', 'i32', 'i64',

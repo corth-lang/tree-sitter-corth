@@ -769,7 +769,7 @@
     },
     "string_literal": {
       "type": "PATTERN",
-      "value": "\\\"[^\\\"]*\\\""
+      "value": "\\\"([^\\\"]|(\\\\\\\"))*[^\\\\]\\\""
     },
     "builtin_type": {
       "type": "CHOICE",
