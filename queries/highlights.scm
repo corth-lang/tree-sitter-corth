@@ -26,16 +26,10 @@
 (name_list (name) @local.definition)
 (local_allocation name: (name) @local.definition)
 
-([
-  (multiline_comment) @comment.multiline.doc
-  (inline_comment) @comment.inline.doc
-  ]+
- .
- [
-  (proc_definition)
-  (macro_definition)
-  (global_allocation)
-  ])
+[(source_file
+  [(inline_comment) (multiline_comment)] @comment.inline.doc)
+ (namespace_scope
+  [(inline_comment) (multiline_comment)] @comment.multiline.doc)]
 
 (proc_definition
  [(inline_comment) @comment.inline.doc
