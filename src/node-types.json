@@ -681,6 +681,18 @@
     "named": false
   },
   {
+    "type": "!bool",
+    "named": false
+  },
+  {
+    "type": "!reset",
+    "named": false
+  },
+  {
+    "type": "!set",
+    "named": false
+  },
+  {
     "type": "%",
     "named": false
   },
@@ -753,6 +765,10 @@
     "named": false
   },
   {
+    "type": "@bool",
+    "named": false
+  },
+  {
     "type": "@dec64",
     "named": false
   },
@@ -789,6 +805,14 @@
     "named": false
   },
   {
+    "type": "arot",
+    "named": false
+  },
+  {
+    "type": "aroti",
+    "named": false
+  },
+  {
     "type": "avg2",
     "named": false
   },
@@ -822,6 +846,18 @@
   },
   {
     "type": "do",
+    "named": false
+  },
+  {
+    "type": "drop",
+    "named": false
+  },
+  {
+    "type": "dropi",
+    "named": false
+  },
+  {
+    "type": "dup",
     "named": false
   },
   {
@@ -897,6 +933,10 @@
     "named": false
   },
   {
+    "type": "is-null",
+    "named": false
+  },
+  {
     "type": "is-pos",
     "named": false
   },
@@ -910,6 +950,10 @@
   },
   {
     "type": "isn-neg",
+    "named": false
+  },
+  {
+    "type": "isn-null",
     "named": false
   },
   {
@@ -1009,7 +1053,35 @@
     "named": false
   },
   {
+    "type": "rot",
+    "named": false
+  },
+  {
+    "type": "roti",
+    "named": false
+  },
+  {
     "type": "sizeof",
+    "named": false
+  },
+  {
+    "type": "sizeof(char)",
+    "named": false
+  },
+  {
+    "type": "sizeof(file-ptr)",
+    "named": false
+  },
+  {
+    "type": "sizeof(int)",
+    "named": false
+  },
+  {
+    "type": "sizeof(ptr)",
+    "named": false
+  },
+  {
+    "type": "sizeof(uint)",
     "named": false
   },
   {
@@ -1027,6 +1099,10 @@
   {
     "type": "string_literal",
     "named": true
+  },
+  {
+    "type": "swp",
+    "named": false
   },
   {
     "type": "syscall0",

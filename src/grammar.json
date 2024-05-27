@@ -719,6 +719,22 @@
         },
         {
           "type": "STRING",
+          "value": "@bool"
+        },
+        {
+          "type": "STRING",
+          "value": "!bool"
+        },
+        {
+          "type": "STRING",
+          "value": "!set"
+        },
+        {
+          "type": "STRING",
+          "value": "!reset"
+        },
+        {
+          "type": "STRING",
           "value": "syscall0"
         },
         {
@@ -807,6 +823,14 @@
         },
         {
           "type": "STRING",
+          "value": "is-null"
+        },
+        {
+          "type": "STRING",
+          "value": "isn-null"
+        },
+        {
+          "type": "STRING",
           "value": "lower-base"
         },
         {
@@ -880,6 +904,58 @@
         {
           "type": "STRING",
           "value": "memcmp64-wl"
+        },
+        {
+          "type": "STRING",
+          "value": "dup"
+        },
+        {
+          "type": "STRING",
+          "value": "drop"
+        },
+        {
+          "type": "STRING",
+          "value": "dropi"
+        },
+        {
+          "type": "STRING",
+          "value": "swp"
+        },
+        {
+          "type": "STRING",
+          "value": "rot"
+        },
+        {
+          "type": "STRING",
+          "value": "roti"
+        },
+        {
+          "type": "STRING",
+          "value": "arot"
+        },
+        {
+          "type": "STRING",
+          "value": "aroti"
+        },
+        {
+          "type": "STRING",
+          "value": "sizeof(int)"
+        },
+        {
+          "type": "STRING",
+          "value": "sizeof(uint)"
+        },
+        {
+          "type": "STRING",
+          "value": "sizeof(ptr)"
+        },
+        {
+          "type": "STRING",
+          "value": "sizeof(char)"
+        },
+        {
+          "type": "STRING",
+          "value": "sizeof(file-ptr)"
         }
       ]
     },
