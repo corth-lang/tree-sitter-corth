@@ -744,6 +744,142 @@
         {
           "type": "STRING",
           "value": "syscall6"
+        },
+        {
+          "type": "STRING",
+          "value": "inc"
+        },
+        {
+          "type": "STRING",
+          "value": "dec"
+        },
+        {
+          "type": "STRING",
+          "value": "neg"
+        },
+        {
+          "type": "STRING",
+          "value": "abs"
+        },
+        {
+          "type": "STRING",
+          "value": "iabs"
+        },
+        {
+          "type": "STRING",
+          "value": "sqr"
+        },
+        {
+          "type": "STRING",
+          "value": "usqr"
+        },
+        {
+          "type": "STRING",
+          "value": "is-zero"
+        },
+        {
+          "type": "STRING",
+          "value": "isn-zero"
+        },
+        {
+          "type": "STRING",
+          "value": "is-neg"
+        },
+        {
+          "type": "STRING",
+          "value": "isn-neg"
+        },
+        {
+          "type": "STRING",
+          "value": "is-pos"
+        },
+        {
+          "type": "STRING",
+          "value": "isn-pos"
+        },
+        {
+          "type": "STRING",
+          "value": "is-range"
+        },
+        {
+          "type": "STRING",
+          "value": "isn-range"
+        },
+        {
+          "type": "STRING",
+          "value": "lower-base"
+        },
+        {
+          "type": "STRING",
+          "value": "upper-base"
+        },
+        {
+          "type": "STRING",
+          "value": "avg2"
+        },
+        {
+          "type": "STRING",
+          "value": "avg3"
+        },
+        {
+          "type": "STRING",
+          "value": "clip"
+        },
+        {
+          "type": "STRING",
+          "value": "sort2"
+        },
+        {
+          "type": "STRING",
+          "value": "sort3"
+        },
+        {
+          "type": "STRING",
+          "value": "@inc8"
+        },
+        {
+          "type": "STRING",
+          "value": "@dec8"
+        },
+        {
+          "type": "STRING",
+          "value": "@inc64"
+        },
+        {
+          "type": "STRING",
+          "value": "@dec64"
+        },
+        {
+          "type": "STRING",
+          "value": "memcpy8"
+        },
+        {
+          "type": "STRING",
+          "value": "memcpy8i"
+        },
+        {
+          "type": "STRING",
+          "value": "memcpy64"
+        },
+        {
+          "type": "STRING",
+          "value": "memcpy64i"
+        },
+        {
+          "type": "STRING",
+          "value": "memcmp8"
+        },
+        {
+          "type": "STRING",
+          "value": "memcmp64"
+        },
+        {
+          "type": "STRING",
+          "value": "memcmp8-wl"
+        },
+        {
+          "type": "STRING",
+          "value": "memcmp64-wl"
         }
       ]
     },

@@ -753,6 +753,22 @@
     "named": false
   },
   {
+    "type": "@dec64",
+    "named": false
+  },
+  {
+    "type": "@dec8",
+    "named": false
+  },
+  {
+    "type": "@inc64",
+    "named": false
+  },
+  {
+    "type": "@inc8",
+    "named": false
+  },
+  {
     "type": "NULLPTR",
     "named": false
   },
@@ -765,7 +781,19 @@
     "named": false
   },
   {
+    "type": "abs",
+    "named": false
+  },
+  {
     "type": "and",
+    "named": false
+  },
+  {
+    "type": "avg2",
+    "named": false
+  },
+  {
+    "type": "avg3",
     "named": false
   },
   {
@@ -783,6 +811,14 @@
   {
     "type": "char_literal",
     "named": true
+  },
+  {
+    "type": "clip",
+    "named": false
+  },
+  {
+    "type": "dec",
+    "named": false
   },
   {
     "type": "do",
@@ -829,11 +865,19 @@
     "named": false
   },
   {
+    "type": "iabs",
+    "named": false
+  },
+  {
     "type": "if",
     "named": false
   },
   {
     "type": "in",
+    "named": false
+  },
+  {
+    "type": "inc",
     "named": false
   },
   {
@@ -849,11 +893,79 @@
     "named": false
   },
   {
+    "type": "is-neg",
+    "named": false
+  },
+  {
+    "type": "is-pos",
+    "named": false
+  },
+  {
+    "type": "is-range",
+    "named": false
+  },
+  {
+    "type": "is-zero",
+    "named": false
+  },
+  {
+    "type": "isn-neg",
+    "named": false
+  },
+  {
+    "type": "isn-pos",
+    "named": false
+  },
+  {
+    "type": "isn-range",
+    "named": false
+  },
+  {
+    "type": "isn-zero",
+    "named": false
+  },
+  {
     "type": "let",
     "named": false
   },
   {
+    "type": "lower-base",
+    "named": false
+  },
+  {
     "type": "macro",
+    "named": false
+  },
+  {
+    "type": "memcmp64",
+    "named": false
+  },
+  {
+    "type": "memcmp64-wl",
+    "named": false
+  },
+  {
+    "type": "memcmp8",
+    "named": false
+  },
+  {
+    "type": "memcmp8-wl",
+    "named": false
+  },
+  {
+    "type": "memcpy64",
+    "named": false
+  },
+  {
+    "type": "memcpy64i",
+    "named": false
+  },
+  {
+    "type": "memcpy8",
+    "named": false
+  },
+  {
+    "type": "memcpy8i",
     "named": false
   },
   {
@@ -870,6 +982,10 @@
   },
   {
     "type": "namespace",
+    "named": false
+  },
+  {
+    "type": "neg",
     "named": false
   },
   {
@@ -894,6 +1010,18 @@
   },
   {
     "type": "sizeof",
+    "named": false
+  },
+  {
+    "type": "sort2",
+    "named": false
+  },
+  {
+    "type": "sort3",
+    "named": false
+  },
+  {
+    "type": "sqr",
     "named": false
   },
   {
@@ -966,6 +1094,14 @@
   },
   {
     "type": "uint",
+    "named": false
+  },
+  {
+    "type": "upper-base",
+    "named": false
+  },
+  {
+    "type": "usqr",
     "named": false
   },
   {
