@@ -1,2 +1,12 @@
-/target
-/node_modules
+bindings/
+src/
+.editorconfig
+.gitattributes
+Cargo.lock
+Cargo.toml
+Makefile
+Package.swift
+binding.gyp
+package.json
+pyproject.toml
+setup.py
